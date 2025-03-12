@@ -1,0 +1,22 @@
+<div class="search-container">
+  
+  <input [(ngModel)]="username" 
+  #ngModel="ngModel" 
+  name="username"
+  placeholder="Ingrese usuario" 
+  minlength="4"
+  required
+  (ngModelChange)="validateInput()"/>
+
+  <button (click)="searchUsers()" [disabled]="username.length < 4 || isInvalidWord">Buscar</button>
+
+  <div *ngIf="ngModel.errors?.['minlength']">El usuario debe tener al menos 4 caracteres.</div>
+  <div *ngIf="isInvalidWord">La palabra "doublevpartners" no está permitida.</div>
+  
+
+  <ul *ngIf="users.length">
+    <li *ngFor="let user of users">
+      <a [routerLink]="['/user', user.login]"> <strong>ID:</strong> {{ user.id }} - <strong>Login:</strong> {{ user.login }}</a>
+    </li>
+  </ul>
+</div>

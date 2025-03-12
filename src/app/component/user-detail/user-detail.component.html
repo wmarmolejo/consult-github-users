@@ -1,0 +1,11 @@
+<div *ngIf="user" class="user-detail">
+    <h2>{{ user.login }}</h2>
+    <img [src]="user.avatar_url" alt="Avatar de {{ user.login }}" />
+    <p><strong>ID:</strong> {{ user.id }}</p>
+    <p><strong>Nombre:</strong> {{ user.name }}</p>
+    <p><strong>Bio:</strong> {{ user.bio }}</p>
+    <p><strong>Repositorios públicos:</strong> {{ user.public_repos }}</p>
+    <p><strong>Seguidores:</strong> {{ user.followers }}</p>
+    <p><strong>Siguiendo:</strong> {{ user.following }}</p>
+    <a [href]="user.html_url" target="_blank">Ver en GitHub</a>
+  </div>
