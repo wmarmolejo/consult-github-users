@@ -1,4 +1,5 @@
 <div class="contenedor">
+
   <h1>Buscador de Usuarios</h1>
   <div class="div-consult">
   <i class="iclass fa-solid fa-person-walking-arrow-right"></i>
@@ -11,8 +12,6 @@
   (ngModelChange)="validateInput()"/>
   <button (click)="searchUsers()" [disabled]="username.length < 4 || isInvalidWord">Buscar</button>
   </div>
-
-  
 
   <table mat-table [dataSource]="users" class="mat-elevation-z8">
 

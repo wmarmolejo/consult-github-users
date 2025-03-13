@@ -5,6 +5,7 @@ import { UserApiService } from '../../service/user-api.service';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { NgxEchartsModule } from 'ngx-echarts';
+import { ErrorService } from '../../service/error.service';
 
 @Component({
   selector: 'app-search',
@@ -25,9 +26,9 @@ export class SearchComponent  {
   users: any[] = [];
   isInvalidWord: boolean = false;
   
-  constructor(private userService: UserApiService) {}
+  constructor(private userService: UserApiService, private errorService: ErrorService) {}
 
-
+  
   searchUsers() {
     let followerUsers: [string, number][] = [];
     
@@ -52,6 +53,9 @@ export class SearchComponent  {
 
   validateInput() {
     this.isInvalidWord = this.username.toLowerCase().includes('doublevpartners'); 
+    if(this.isInvalidWord){
+      this.errorService.setError('Error:Usuario no permitidio.');
+    }
   }
 
   generateChartData(dataUsers: [string, number][]) {
