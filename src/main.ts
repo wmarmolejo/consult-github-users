@@ -6,10 +6,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { provideRouter } from '@angular/router';
 import { routes } from './app/app.routes';
 import { bootstrapApplication } from '@angular/platform-browser';
+import { NgxEchartsModule, NGX_ECHARTS_CONFIG } from 'ngx-echarts';
 
 bootstrapApplication(AppComponent, {
   providers: [
-    importProvidersFrom(BrowserModule, HttpClientModule),
+
+    importProvidersFrom(BrowserModule, HttpClientModule, NgxEchartsModule),
+    { provide: NGX_ECHARTS_CONFIG, useValue: { echarts: () => import('echarts') } },
     provideRouter(routes)
   ]
 }).catch(err => console.error(err));

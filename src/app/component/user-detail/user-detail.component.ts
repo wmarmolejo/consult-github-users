@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserApiService } from '../../service/user-api.service';
-import { NgIf } from '@angular/common';
+import { CommonModule, NgIf } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
 
 @Component({
   selector: 'app-user-detail',
   standalone: true,
-  imports: [NgIf],
+  imports: [NgIf,CommonModule, MatCardModule, MatButtonModule,  MatDividerModule],
   templateUrl: './user-detail.component.html',
   styleUrl: './user-detail.component.css'
 })

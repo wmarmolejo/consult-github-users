@@ -1,0 +1,25 @@
+.profile-card {
+    max-width: 40%;
+    margin: auto;
+    padding: 20px;
+    margin-top: 3% ;
+    text-align: center;
+}
+
+.profile-header {
+    display: flex;
+    justify-content: center;
+    padding:2rem;
+}
+  
+img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+
+mat-card-actions {
+display: flex;
+justify-content: space-around;
+}

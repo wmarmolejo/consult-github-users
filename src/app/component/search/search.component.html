@@ -1,5 +1,7 @@
-<div class="search-container">
-  
+<div class="contenedor">
+  <h1>Buscador de Usuarios</h1>
+  <div class="div-consult">
+  <i class="iclass fa-solid fa-person-walking-arrow-right"></i>
   <input [(ngModel)]="username" 
   #ngModel="ngModel" 
   name="username"
@@ -7,16 +9,29 @@
   minlength="4"
   required
   (ngModelChange)="validateInput()"/>
-
   <button (click)="searchUsers()" [disabled]="username.length < 4 || isInvalidWord">Buscar</button>
+  </div>
 
-  <div *ngIf="ngModel.errors?.['minlength']">El usuario debe tener al menos 4 caracteres.</div>
-  <div *ngIf="isInvalidWord">La palabra "doublevpartners" no está permitida.</div>
   
 
-  <ul *ngIf="users.length">
-    <li *ngFor="let user of users">
-      <a [routerLink]="['/user', user.login]"> <strong>ID:</strong> {{ user.id }} - <strong>Login:</strong> {{ user.login }}</a>
-    </li>
-  </ul>
+  <table mat-table [dataSource]="users" class="mat-elevation-z8">
+
+    <!-- Columna ID -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <!-- Columna Nombre -->
+    <ng-container matColumnDef="login">
+      <th mat-header-cell *matHeaderCellDef> nombre </th> 
+      <td mat-cell *matCellDef="let element"> <a [routerLink]="['/user', element.login]">{{element.login}}</a> </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+    <echarts [options]="barChartOptions" class="chart-container"></echarts>
+
 </div>
